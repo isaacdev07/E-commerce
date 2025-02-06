@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,6 +19,14 @@ public class Pagamento {
 	private long id;
 	
 	private Instant momento;
+	
+	@OneToOne
+	@MapsId
+	private Pedido pedido;
+	
+	public Pagamento() {
+		
+	}
 
 	public Pagamento(long id, Instant momento) {
 		this.id = id;

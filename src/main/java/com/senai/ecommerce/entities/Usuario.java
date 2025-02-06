@@ -1,15 +1,20 @@
 package com.senai.ecommerce.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -19,6 +24,10 @@ public class Usuario {
 	private String telefone;
 	private String senha;
 	private String roles;
+	
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Usuario(long id, String nome, String email, String telefone, String senha, String roles) {	
 		this.id = id;
